@@ -20,11 +20,9 @@ import { LightPurpleButton } from "../utils/buttonStyles";
 import { authUser } from "../redux/userHandle";
 import styled from "styled-components";
 import Popup from "../components/Popup";
+import "./AuthenticationPage.css"
 
 const AuthenticationPage = ({ mode, role }) => {
-  const bgpic =
-    "https://images.pexels.com/photos/1121097/pexels-photo-1121097.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -44,33 +42,26 @@ const AuthenticationPage = ({ mode, role }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const email = event.target.email.value;
     const password = event.target.password.value;
-
     console.log(email, password);
     if (!email || !password) {
       if (!email) setEmailError(true);
       if (!password) setPasswordError(true);
       return;
     }
-
     if (mode === "Register") {
       const name = event.target.userName.value;
-
       if (!name) {
         if (!name) setUserNameError(true);
         return;
       }
-
       if (role === "Seller") {
         const shopName = event.target.shopName.value;
-
         if (!shopName) {
           if (!shopName) setShopNameError(true);
           return;
         }
-
         const sellerFields = { name, email, password, role, shopName };
         dispatch(authUser(sellerFields, role, mode));
       } else {
@@ -84,6 +75,8 @@ const AuthenticationPage = ({ mode, role }) => {
     }
     setLoader(true);
   };
+
+
 
   const handleInputChange = (event) => {
     const { name } = event.target;
@@ -106,6 +99,7 @@ const AuthenticationPage = ({ mode, role }) => {
       setShowPopup(true);
     }
   }, [status, currentUser, currentRole, navigate, error, response]);
+
 
   return (
     <>
@@ -252,28 +246,12 @@ const AuthenticationPage = ({ mode, role }) => {
             </Box>
           </Box>
         </Grid>
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage: `url(${bgpic})`,
-            backgroundRepeat: "no-repeat",
-            backgroundColor: (t) =>
-              t.palette.mode === "light"
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
       </Grid>
       <Popup
         message={message}
         setShowPopup={setShowPopup}
-        showPopup={showPopup}
-      />
+        showPopup={showPopup} 
+    />
     </>
   );
 };
