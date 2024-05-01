@@ -1,0 +1,53 @@
+.Authentication {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin-top: 50px;
+}
+
+.Authentication h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c2143;
+}
+
+.Authentication input {
+  width: 96%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.Authentication .button {
+  width: 96%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #4ba8f8;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.Authentication .button:hover {
+  background-color: #0189ff;
+}
+
+.Authentication p {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.Authentication p a {
+  color: #3d96e4;
+  text-decoration: none;
+}
+
+.Authentication p a:hover {
+  text-decoration: underline;
+}
