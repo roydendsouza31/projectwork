@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 
 const app = express();
 const Routes = require("./routes/route.js");
@@ -9,13 +8,11 @@ const { urlencoded } = require("body-parser");
 
 const PORT = 5000;
 
-dotenv.config();
-
-app.use(express.json({ limit: "10mb" }, urlencoded({ extended: true })));
+app.use(express.json({ limit: "10mb" }));
 app.use(cors());
 
 mongoose
-  .connect("mongodb://localhost:27017/ecommerce", {
+  .connect("mongodb://localhost:27017/creationsgoa", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

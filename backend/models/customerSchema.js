@@ -1,81 +1,75 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const customerSchema = new mongoose.Schema({
-    name: {
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  phoneNo: {
+    type: Number,
+    required: true,
+  },
+  role: {
+    type: String,
+    default: "Customer",
+  },
+  cartDetails: [
+    {
+      serviceName: {
         type: String,
-        required: true,
-    },
-    email: {
+      },
+      price: {
+        mrp: {
+          type: Number,
+        },
+        cost: {
+          type: Number,
+        },
+        discountPercent: {
+          type: Number,
+        },
+      },
+      productImage: {
         type: String,
-        unique: true,
-        required: true,
-    },
-    password: {
+      },
+      category: {
         type: String,
-        required: true,
-    },
-    role: {
+      },
+      description: {
         type: String,
-        default: "Customer"
+      },
+      quantity: {
+        type: Number,
+      },
+      seller: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "seller",
+      },
     },
-    cartDetails: [{
-        productName: {
-            type: String
-        },
-        price: {
-            mrp: {
-                type: Number
-            },
-            cost: {
-                type: Number
-            },
-            discountPercent: {
-                type: Number
-            }
-        },
-        subcategory: {
-            type: String
-        },
-        productImage: {
-            type: String
-        },
-        category: {
-            type: String
-        },
-        description: {
-            type: String
-        },
-        tagline: {
-            type: String
-        },
-        quantity: {
-            type: Number
-        },
-        seller: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'seller'
-        },
-    }],
-    shippingData: {
-        address: {
-            type: String,
-        },
-        city: {
-            type: String,
-        },
-        state: {
-            type: String,
-        },
-        country: {
-            type: String,
-        },
-        pinCode: {
-            type: Number,
-        },
-        phoneNo: {
-            type: Number,
-        },
-    }
+  ],
+  address: {
+    city: {
+      type: String,
+    },
+    state: {
+      type: String,
+    },
+    pinCode: {
+      type: Number,
+    },
+    taluka: {
+      type: String,
+    },
+  },
 });
 
-module.exports = mongoose.model("customer", customerSchema)
+module.exports = mongoose.model("customer", customerSchema);
